@@ -283,7 +283,7 @@ class Estimator():
         # in its own frame, so we need a 90 degree rotation about the x-axis to transform 
         #TODO: Check this, doesn't look right. Should be camera to world
         R = vec_to_rot_matrix(state[6:9])
-        rot = rot_x(torch.tensor(np.pi/2)) @ R.matrix()[:3, :3]
+        rot = rot_x(torch.tensor(np.pi/2)) @ R[:3, :3]
 
         pose, trans = nerf_matrix_to_ngp_torch(rot, state[:3])
 
